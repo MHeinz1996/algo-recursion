@@ -6,15 +6,18 @@ def factorial(x):
 
 def palindrome(word):
 	new_word = [str(x.lower()) for x in word if x != ' ']
-	print(new_word)
+
 	if len(new_word) <= 1:
 		return True
-	elif new_word.pop(0) != new_word.pop(len(new_word)-1):
+	elif new_word[0] != new_word[len(new_word)-1]:
 		return False
 	else:
-		new_word.pop(0)
-		new_word.pop(len(new_word)-1)
-		return palindrome(new_word)
+		if str(new_word[0]) == str(new_word[len(new_word)-1]):
+			new_word.pop(0)
+			new_word.pop()
+			return palindrome(new_word)
+		else:
+			return False
 
 def bottles(num):
 	if num == 2:
@@ -46,4 +49,4 @@ def roman_num(num):
 			if((num/roman_numeral_to_arabic_map[key]) >= 1):
 				return f"{key}" + f"{roman_num(num - roman_numeral_to_arabic_map[key])}"
 
-# print(palindrome('racecar'))
+print(palindrome('Race car'))
